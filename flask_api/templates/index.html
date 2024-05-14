@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Chatbot</title>
+  </head>
+  <body>
+    <h1>Chatbot</h1>
+    <form id="chat-form">
+      <!-- <label for="context">Context:</label><br />
+      <textarea id="context" name="context" rows="4" cols="50"></textarea
+      ><br /><br /> -->
+      <label for="question">Question:</label><br />
+      <input type="text" id="question" name="question" /><br /><br />
+      <input type="submit" value="Ask" />
+    </form>
+    <div id="answer"></div>
+
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script>
+      $(document).ready(function () {
+        $("#chat-form").submit(function (event) {
+          event.preventDefault();
+          var context = $("#context").val();
+          var question = $("#question").val();
+
+          $.ajax({
+            url: "/ask",
+            type: "POST",
+            contentType: "application/json",
+            data: JSON.stringify({ context: context, question: question }),
+            success: function (response) {
+              $("#answer").text(response.answer);
+            },
+          });
+        });
+      });
+    </script>
+  </body>
+</html>
