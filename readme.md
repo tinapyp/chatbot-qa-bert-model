@@ -33,7 +33,7 @@ More detail you can read in flask_api/readme.md
    - Navigate to the `whatsapp_bot` directory in your terminal.
    - Install the necessary dependencies by running:
      ```
-    npm install whatsapp-web.js qrcode-terminal node-fetch
+     npm install whatsapp-web.js qrcode-terminal node-fetch
      ```
 
 3. **Run the WhatsApp Bot**:
